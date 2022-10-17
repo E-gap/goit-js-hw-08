@@ -24,7 +24,7 @@ if (parsedData.message) {
 
 const object = {}
 
-const fillEmail = function (event) {    
+const fillEmail = (event) => {    
     
 
     object.email = event.currentTarget.value;
@@ -32,7 +32,7 @@ const fillEmail = function (event) {
 
 }
 
-const fillMessage = function (event) {  
+const fillMessage = (event) => {  
     
     
     object.message = event.currentTarget.value;
@@ -40,7 +40,7 @@ const fillMessage = function (event) {
 
 }
 
-const submitForm = function (event) {
+const submitForm = (event) => {
     event.preventDefault();
     console.log(object);
     event.currentTarget.reset();
