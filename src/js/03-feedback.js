@@ -1,10 +1,10 @@
 
+
 const throttle = require('lodash.throttle');
 
 const email = document.querySelector('[type="email"]');
 const message = document.querySelector('[name="message"]');
 const form = document.querySelector('.feedback-form');
-
 
 
  
@@ -21,24 +21,15 @@ if (parsedData.message) {
     } 
 }
 
-
 const object = {}
 
-const fillEmail = (event) => {    
+const fillForms = (event) => {
     
-
-    object.email = event.currentTarget.value;
-    localStorage.setItem("feedback-form-state", JSON.stringify(object));
-
+    object.email = event.currentTarget.elements.email.value; 
+    object.message = event.currentTarget.elements.message.value;    
+   localStorage.setItem("feedback-form-state", JSON.stringify(object)); 
 }
 
-const fillMessage = (event) => {  
-    
-    
-    object.message = event.currentTarget.value;
-     localStorage.setItem("feedback-form-state", JSON.stringify(object));
-
-}
 
 const submitForm = (event) => {
     event.preventDefault();
@@ -49,11 +40,12 @@ const submitForm = (event) => {
 }
 
 
-
-email.addEventListener('input', throttle(fillEmail, 500));
-message.addEventListener('input', throttle(fillMessage, 500));
+form.addEventListener('input', throttle(fillForms,500));
 form.addEventListener('submit', submitForm);
 document.addEventListener('DOMContentLoaded', checkLocalStorage);
+
+
+
 
 
 
